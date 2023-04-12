@@ -1,0 +1,42 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: grid;
+    place-content: center;
+    height: 100vh;
+}
+
+img{
+    width: 100%;
+    display: block;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(40px, 8rem));
+    gap: .8rem;
+    padding: .8rem;
+}
+
+.card {
+    background-color: rgb(253, 195, 86);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-block: 3rem;
+    border-radius: .5rem;
+    border: 2px solid black;
+}
+
+.card img{
+    width: 3rem;
+}
+
+.card:hover{
+    cursor: pointer;
+    background-color: rgb(252, 167, 9);
+}
