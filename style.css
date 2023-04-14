@@ -23,20 +23,20 @@ img{
 }
 
 .card {
-    background-color: rgb(253, 195, 86);
+    background-color: #feb74c;
     display: flex;
     justify-content: center;
     align-items: center;
     padding-block: 3rem;
     border-radius: .5rem;
     border: 2px solid black;
+    transition: all .5s ease;
 }
 
 .card img{
-    width: 3rem;
+    width: 4rem;
 }
 
 .card:hover{
     cursor: pointer;
-    background-color: rgb(252, 167, 9);
 }
