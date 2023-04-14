@@ -21,4 +21,16 @@ function getSrcData() {
   }
 }
 
+cards.forEach((card) => {
+  let cardImg = card.firstElementChild;
+  card.addEventListener("click", () => {
+    flipCard(card, cardImg)
+  });
+});
+
+function flipCard(card, img){
+  img.src = img.dataset.src
+  card.style.transform = "rotateY(-180deg)"
+  card.style.backgroundColor = "transparent"
+}
 
