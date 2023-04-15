@@ -1,6 +1,7 @@
-isGameActive = true;
+let isGameActive = true;
+let isCardCorrect;
 let cards = Array.from(document.querySelectorAll(".card"));
-let imageElem = document.querySelectorAll(".container img");
+let imageElem = Array.from(document.querySelectorAll(".container img"));
 let cardSource = [
   "img/apple.png",
   "img/banana.png",
@@ -12,6 +13,7 @@ let cardSource = [
   "img/watermelon.png",
 ];
 let CARD_DATA = [...cardSource, ...cardSource].sort(() => Math.random() - 0.5);
+let checkArray = [];
 
 getSrcData();
 
@@ -24,13 +26,31 @@ function getSrcData() {
 cards.forEach((card) => {
   let cardImg = card.firstElementChild;
   card.addEventListener("click", () => {
-    flipCard(card, cardImg)
+    //if(checkArray.length > 1){return}
+    flipCard(card, cardImg);
   });
 });
 
-function flipCard(card, img){
-  img.src = img.dataset.src
-  card.style.transform = "rotateY(-180deg)"
-  card.style.backgroundColor = "transparent"
+function flipCard(card, img) {
+  card.classList.add("flip-card")
+  img.src = img.dataset.src;
+  setRules(img);
+}
+
+function setRules(img) {
+  checkArray.unshift(img.src);
+  let flipImg = Array.from(document.querySelectorAll(".flip-card"))
+  console.log(flipImg)
+  if(flipImg.length < 2){return}
+  else{
+    correctCards()
+  }
+}
+
+function correctCards(){
+  checkArray[0] == checkArray[1]
+  ? (isCardCorrect = true)
+  : (isCardCorrect = false);
+  console.log(isCardCorrect)
 }
 

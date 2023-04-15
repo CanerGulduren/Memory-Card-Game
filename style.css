@@ -40,3 +40,8 @@ img{
 .card:hover{
     cursor: pointer;
 }
+
+.flip-card{
+    transform: rotateY(-180deg);
+    background-color: transparent;
+}
