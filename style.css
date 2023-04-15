@@ -45,3 +45,12 @@ img{
     transform: rotateY(-180deg);
     background-color: transparent;
 }
+
+@media(max-width: 700px){
+    .card{
+        padding-block: 2rem;
+    }
+    .card img{
+        width: 2.5rem;
+    }
+}

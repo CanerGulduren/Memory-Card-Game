@@ -54,3 +54,10 @@ function correctCards(){
   console.log(isCardCorrect)
 }
 
+function flipCardBack(card, img) {
+  setTimeout(() => {
+    img.src = "img/question.png";
+    card.style.transform = "rotateY(360deg)";
+    card.style.backgroundColor = "#feb74c";
+  }, 2000);
+}
