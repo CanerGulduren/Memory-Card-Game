@@ -1,7 +1,8 @@
 let isGameActive = true;
-let isCardCorrect;
-let cards = Array.from(document.querySelectorAll(".card"));
-let imageElem = Array.from(document.querySelectorAll(".container img"));
+let isCardMatched;
+const cards = Array.from(document.querySelectorAll(".card"));
+const imageElem = Array.from(document.querySelectorAll(".gameboard img"));
+const questionImg = "img/question.png";
 let cardSource = [
   "img/apple.png",
   "img/banana.png",
@@ -13,9 +14,26 @@ let cardSource = [
   "img/watermelon.png",
 ];
 let CARD_DATA = [...cardSource, ...cardSource].sort(() => Math.random() - 0.5);
-let checkArray = [];
+let matchedCards = [];
+
 
 getSrcData();
+
+cards.forEach((card) => {
+  let cardImg = card.firstElementChild;
+  card.addEventListener("click", () => {
+    if (matchedCards.length > 1) {
+      return;
+    }
+    if (card.classList.contains("flipped")) {
+      return;
+    }
+    card.classList.add("flip-card", "flipped");
+    cardImg.src = cardImg.dataset.src;
+    checkCardMatch(cardImg);
+    setCardBehavior();
+  });
+});
 
 function getSrcData() {
   for (let i = 0; i < CARD_DATA.length; i++) {
@@ -23,41 +41,33 @@ function getSrcData() {
   }
 }
 
-cards.forEach((card) => {
-  let cardImg = card.firstElementChild;
-  card.addEventListener("click", () => {
-    //if(checkArray.length > 1){return}
-    flipCard(card, cardImg);
-  });
-});
-
-function flipCard(card, img) {
-  card.classList.add("flip-card")
-  img.src = img.dataset.src;
-  setRules(img);
+function checkCardMatch(img) {
+  matchedCards.unshift(img.src);
+  matchedCards[0] == matchedCards[1]
+    ? (isCardMatched = true)
+    : (isCardMatched = false);
 }
 
-function setRules(img) {
-  checkArray.unshift(img.src);
-  let flipImg = Array.from(document.querySelectorAll(".flip-card"))
-  console.log(flipImg)
-  if(flipImg.length < 2){return}
-  else{
-    correctCards()
+function setCardBehavior() {
+  let flipCard = document.querySelectorAll(".flipped");
+  if (flipCard.length < 2) {
+    return;
   }
+  flipCard.forEach((card) => {
+    if (isCardMatched) {
+      card.style.backgroundColor = "#84ff46";
+      card.classList.remove("flipped");
+      matchedCards.length = 0;
+    } else {
+      setTimeout(() => {
+        flipAfterAnim(card)
+      }, 1000);
+    }
+  });
 }
 
-function correctCards(){
-  checkArray[0] == checkArray[1]
-  ? (isCardCorrect = true)
-  : (isCardCorrect = false);
-  console.log(isCardCorrect)
-}
-
-function flipCardBack(card, img) {
-  setTimeout(() => {
-    img.src = "img/question.png";
-    card.style.transform = "rotateY(360deg)";
-    card.style.backgroundColor = "#feb74c";
-  }, 2000);
+function flipAfterAnim(card){
+  card.classList.remove("flip-card", "flipped");
+  card.firstElementChild.src = questionImg;
+  matchedCards.length = 0;
 }
