@@ -1,13 +1,13 @@
 *{
-    padding: 0;
-    margin: 0;
     box-sizing: border-box;
 }
 
 body{
-    display: grid;
-    place-content: center;
-    height: 100vh;
+    padding: 0;
+    margin: 0;
+    background: radial-gradient(#3195ff, #110e48);
+    font-size: 1.2rem;
+    color: #fff;
 }
 
 img{
@@ -15,15 +15,54 @@ img{
     display: block;
 }
 
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: min(90vw, 35rem);
+    margin-top: 1rem;
+    margin-inline: auto;
+}
+
+nav .remain-attempt{
+    color: orange;
+    padding: 1rem;
+    font-size: 2rem;
+}
+
+.remain-attempt span{
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+button,
+select{
+    border: none;
+    padding-block: 0.5rem;
+    padding-inline: 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.options{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: min(90vw, 35rem);
+    margin-inline: auto;
+}
+
 .gameboard{
     display: grid;
     grid-template-columns: repeat(4, minmax(40px, 8rem));
-    gap: .8rem;
+    justify-content: center;
+    gap: 1rem;
     padding: .8rem;
+    margin: 2rem 0 4rem 0;
 }
 
 .card {
-    background-color: #feb74c;
+    background-color: #f38225;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,28 +73,29 @@ img{
 }
 
 .card img{
-    width: 4rem;
+    width: 3rem;
 }
 
-.card:hover{
+.card:hover,
+select:hover,
+button:hover{
     cursor: pointer;
 }
 
 .flip-card{
     transform: rotateY(-180deg);
-    background-color: transparent;
+    background-color: rgb(220, 220, 220);
 }
 
-.flip-card-back{
-    transform: rotateY(360deg);
-    background-color: #feb74c;
-}
 
 @media(max-width: 700px){
+    .gameboard{
+        gap: .8rem;
+    }
     .card{
         padding-block: 2rem;
     }
     .card img{
-        width: 2.5rem;
+        width: 2.8rem;
     }
 }

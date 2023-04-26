@@ -1,31 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Memory Game</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script defer src="script.js"></script>
-</head>
-<body>
-    <div class="gameboard">
-        <div class="card"><img src="img/question.png"></div>
-        <div class="card"><img src="img/question.png"></div>
-        <div class="card"><img src="img/question.png"></div>
-        <div class="card"><img src="img/question.png"></div>
-        <div class="card"><img src="img/question.png"></div>
-        <div class="card"><img src="img/question.png"></div>
-        <div class="card"><img src="img/question.png"></div>
-        <div class="card"><img src="img/question.png"></div>
-        <div class="card"><img src="img/question.png"></div>
-        <div class="card"><img src="img/question.png"></div>
-        <div class="card"><img src="img/question.png"></div>
-        <div class="card"><img src="img/question.png"></div>
-        <div class="card"><img src="img/question.png"></div>
-        <div class="card"><img src="img/question.png"></div>
-        <div class="card"><img src="img/question.png"></div>
-        <div class="card"><img src="img/question.png"></div>
+  </head>
+  <body>
+    <nav>
+      <button class="help-btn">How to Play ?</button>
+    <div class="remain-attempt">
+      <span>Remain Attempt:</span>
+     10
     </div>
-</body>
+      </nav>
+
+    <div class="gameboard">
+      <div class="card"><img src="img/question.png" /></div>
+      <div class="card"><img src="img/question.png" /></div>
+      <div class="card"><img src="img/question.png" /></div>
+      <div class="card"><img src="img/question.png" /></div>
+      <div class="card"><img src="img/question.png" /></div>
+      <div class="card"><img src="img/question.png" /></div>
+      <div class="card"><img src="img/question.png" /></div>
+      <div class="card"><img src="img/question.png" /></div>
+      <div class="card"><img src="img/question.png" /></div>
+      <div class="card"><img src="img/question.png" /></div>
+      <div class="card"><img src="img/question.png" /></div>
+      <div class="card"><img src="img/question.png" /></div>
+      <div class="card"><img src="img/question.png" /></div>
+      <div class="card"><img src="img/question.png" /></div>
+      <div class="card"><img src="img/question.png" /></div>
+      <div class="card"><img src="img/question.png" /></div>
+    </div>
+
+    <div class="options">
+      <div>
+        <span>Choose Difficulty:</span>
+        <select name="difficulty-change">
+          <option value="15">Easy</option>
+          <option value="10" selected>Normal</option>
+          <option value="5">Hard</option>
+        </select>
+      </div>
+      <button class="restart-btn">Restart</button>
+    </div>
+  </body>
 </html>

@@ -16,7 +16,6 @@ let cardSource = [
 let CARD_DATA = [...cardSource, ...cardSource].sort(() => Math.random() - 0.5);
 let matchedCards = [];
 
-
 getSrcData();
 
 cards.forEach((card) => {
@@ -25,7 +24,7 @@ cards.forEach((card) => {
     if (matchedCards.length > 1) {
       return;
     }
-    if (card.classList.contains("flipped")) {
+    if (card.classList.contains("flip-card")){
       return;
     }
     card.classList.add("flip-card", "flipped");
@@ -60,13 +59,13 @@ function setCardBehavior() {
       matchedCards.length = 0;
     } else {
       setTimeout(() => {
-        flipAfterAnim(card)
+        flipAfterAnim(card);
       }, 1000);
     }
   });
 }
 
-function flipAfterAnim(card){
+function flipAfterAnim(card) {
   card.classList.remove("flip-card", "flipped");
   card.firstElementChild.src = questionImg;
   matchedCards.length = 0;
