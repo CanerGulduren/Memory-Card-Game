@@ -11,10 +11,11 @@
   <body>
     <nav>
       <button class="help-btn">How to Play ?</button>
-    <div class="remain-attempt">
+      <div>
       <span>Remain Attempt:</span>
-     10
+    <div class="remain-attempt">
     </div>
+  </div>
       </nav>
 
     <div class="gameboard">
@@ -34,12 +35,16 @@
       <div class="card"><img src="img/question.png" /></div>
       <div class="card"><img src="img/question.png" /></div>
       <div class="card"><img src="img/question.png" /></div>
+      <div class="game-end">
+        <span class="end-message"></span>
+        <button class="restart-btn">Play Again</button>
+      </div>
     </div>
 
     <div class="options">
       <div>
         <span>Choose Difficulty:</span>
-        <select name="difficulty-change">
+        <select name="difficulty-change" class="difficulty-change">
           <option value="15">Easy</option>
           <option value="10" selected>Normal</option>
           <option value="5">Hard</option>
