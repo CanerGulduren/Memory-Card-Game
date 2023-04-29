@@ -3,12 +3,11 @@ let isCardMatched;
 const cards = Array.from(document.querySelectorAll(".card"));
 const imageElem = Array.from(document.querySelectorAll(".gameboard img"));
 const questionImg = "img/question.png";
-const gameEndScreen = document.querySelector(".game-end");
-const gameEndMessage = document.querySelector(".end-message");
-let difficultyChange = document.querySelector(".difficulty-change");
-let selectedDifficulty =
-  document.getElementsByTagName("option")[difficultyChange.selectedIndex].value;
-let remainAttempt = document.querySelector(".remain-attempt");
+const gameEndScreen = document.querySelector(".game-end")
+const gameEndMessage = document.querySelector(".end-message")
+let difficultyChange = document.querySelector(".difficulty-change")
+let selectedDifficulty = document.getElementsByTagName("option")[difficultyChange.selectedIndex].value
+let remainAttempt = document.querySelector(".remain-attempt")
 let cardSource = [
   "img/apple.png",
   "img/banana.png",
@@ -20,13 +19,25 @@ let cardSource = [
   "img/watermelon.png",
 ];
 let CARD_DATA = [...cardSource, ...cardSource].sort(() => Math.random() - 0.5);
+let GAME_END_DATA = [
+  {lostBG: "radial-gradient(#ed1818, #c89b9b)",
+  winBG: "radial-gradient(#2e881e, #a2be92)", 
+  
+  },
+   {
+    lostTXT: "You Lost!",
+    winTXT: "You Win!"
+   }
+]
 let matchedCards = [];
+
 
 function getSrcData() {
   for (let i = 0; i < CARD_DATA.length; i++) {
     imageElem[i].dataset.src = CARD_DATA[i];
-  }
-  remainAttempt.innerText = selectedDifficulty;
+    cards[i].dataset.matched = false
+  } 
+  remainAttempt.innerText = selectedDifficulty
 }
 
 function checkCardMatch(img) {
@@ -41,15 +52,16 @@ function setRules() {
   if (flipCard.length < 2) {
     return;
   }
-  cardBehaviour(flipCard);
-  decreaseAttempt();
+  cardBehaviour(flipCard)
+  decreaseAttempt()
 }
 
-function cardBehaviour(flipCard) {
+function cardBehaviour(flipCard){
   flipCard.forEach((card) => {
     if (isCardMatched) {
       card.style.backgroundColor = "#84ff46";
       card.classList.remove("flipped");
+      card.dataset.matched = true
       matchedCards.length = 0;
     } else {
       setTimeout(() => {
@@ -60,35 +72,49 @@ function cardBehaviour(flipCard) {
 }
 
 function flipAfterAnim(card) {
+  card.dataset.matched = false
   card.classList.remove("flip-card", "flipped");
   card.firstElementChild.src = questionImg;
   matchedCards.length = 0;
 }
 
-function decreaseAttempt() {
-  if (isCardMatched) {
-    return;
-  }
-  let currentAttempt = Number(remainAttempt.innerText);
-  currentAttempt--;
-  remainAttempt.innerText = currentAttempt;
-  if (currentAttempt === 0) {
-    isGameActive = false;
-  }
+function decreaseAttempt(){
+  if(isCardMatched){return}
+  let currentAttempt = Number(remainAttempt.innerText) 
+  currentAttempt--
+  remainAttempt.innerText = currentAttempt
 }
 
-function disableDiffChange() {
-  isGameActive
-    ? (difficultyChange.disabled = true)
-    : (difficultyChange.disabled = false);
+function endGame(){
+  let winCondition = cards.every((card) => card.dataset.matched === "true");
+  if (remainAttempt.innerText == 0 || winCondition) {
+    isGameActive = false;
+  }
+  if (isGameActive) {
+    return;
+  }
+  gameEndScreen.style.display = "flex";
+  gameEndScreen.style.background = `${
+    winCondition ? GAME_END_DATA[0].winBG : GAME_END_DATA[0].lostBG
+  }`;
+  gameEndMessage.innerHTML = `${
+    winCondition ? GAME_END_DATA[1].winTXT : GAME_END_DATA[1].lostTXT
+  }`;
 }
+  
+
+function disableDiffChange(){
+  isGameActive ? difficultyChange.disabled = true : difficultyChange.disabled = false
+}
+
+
 
 getSrcData();
 
 cards.forEach((card) => {
   let cardImg = card.firstElementChild;
   card.addEventListener("click", () => {
-    isGameActive = true;
+    isGameActive = true
     if (matchedCards.length > 1 || card.classList.contains("flip-card")) {
       return;
     }
@@ -96,13 +122,11 @@ cards.forEach((card) => {
     cardImg.src = cardImg.dataset.src;
     checkCardMatch(cardImg);
     setRules();
-    disableDiffChange();
+    disableDiffChange()
+    endGame()
   });
 });
 
-difficultyChange.addEventListener("change", () => {
-  remainAttempt.innerText =
-    document.getElementsByTagName("option")[
-      difficultyChange.selectedIndex
-    ].value;
-});
+difficultyChange.addEventListener("change", ()=>{
+  remainAttempt.innerText = document.getElementsByTagName("option")[difficultyChange.selectedIndex].value
+})

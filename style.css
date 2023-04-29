@@ -92,7 +92,6 @@ select {
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  background: radial-gradient(#2e881e, #a3cc8b);
 }
 
 .game-end span{
