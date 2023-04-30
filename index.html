@@ -19,25 +19,35 @@
       </nav>
 
     <div class="gameboard">
-      <div class="card"><img src="img/question.png" /></div>
-      <div class="card"><img src="img/question.png" /></div>
-      <div class="card"><img src="img/question.png" /></div>
-      <div class="card"><img src="img/question.png" /></div>
-      <div class="card"><img src="img/question.png" /></div>
-      <div class="card"><img src="img/question.png" /></div>
-      <div class="card"><img src="img/question.png" /></div>
-      <div class="card"><img src="img/question.png" /></div>
-      <div class="card"><img src="img/question.png" /></div>
-      <div class="card"><img src="img/question.png" /></div>
-      <div class="card"><img src="img/question.png" /></div>
-      <div class="card"><img src="img/question.png" /></div>
-      <div class="card"><img src="img/question.png" /></div>
-      <div class="card"><img src="img/question.png" /></div>
-      <div class="card"><img src="img/question.png" /></div>
-      <div class="card"><img src="img/question.png" /></div>
-      <div class="game-end">
+      <div class="card"><img /></div>
+      <div class="card"><img /></div>
+      <div class="card"><img /></div>
+      <div class="card"><img /></div>
+      <div class="card"><img /></div>
+      <div class="card"><img /></div>
+      <div class="card"><img /></div>
+      <div class="card"><img /></div>
+      <div class="card"><img /></div>
+      <div class="card"><img /></div>
+      <div class="card"><img /></div>
+      <div class="card"><img /></div>
+      <div class="card"><img /></div>
+      <div class="card"><img /></div>
+      <div class="card"><img /></div>
+      <div class="card"><img /></div>
+      <div class="hide-container" id="game-end">
         <span class="end-message"></span>
-        <button class="restart-btn">Play Again</button>
+        <button class="restart-btn" id="play-again">Play Again</button>
+      </div>
+      <div class="hide-container" id="help-section">
+        <img src="img/quit.png" class="icon" id="quit-btn">
+        <h2>How to Play ?</h2>
+        <ul>
+          <li>The game starts with clicking on a card.</li>
+          <li>The card that you clicked on will reveal a picture by turning over.</li>
+          <li>If the card you clicked on matches with the next card you click, it stays face-up. However, if they do not match, it turns back over and you lose one of your limited attempts.</li>
+          <li>If you can match all the cards before your attempts run out, you win the game.</li>
+        </ul>
       </div>
     </div>
 
@@ -50,7 +60,9 @@
           <option value="5">Hard</option>
         </select>
       </div>
-      <button class="restart-btn">Restart</button>
+      <button class="restart-btn" id="restart-btn">
+        <img src="img/restart.png" class="icon">
+        Restart</button>
     </div>
   </body>
 </html>

@@ -15,6 +15,10 @@ img {
   display: block;
 }
 
+.icon{
+  width: 1.5rem;
+}
+
 nav {
   display: flex;
   align-items: center;
@@ -50,6 +54,13 @@ select {
   border: 1px solid black;
 }
 
+#restart-btn{
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+}
+
+
 .options {
   display: flex;
   justify-content: space-between;
@@ -79,14 +90,15 @@ select {
   transition: all 0.5s ease;
 }
 
-.game-end {
+.hide-container {
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  max-width: 35rem;
+  width: min(98vw, 35rem);
   margin-inline: auto;
+  padding: 1rem;
   display: none;
   flex-direction: column;
   justify-content: center;
@@ -94,11 +106,26 @@ select {
   border-radius: 10px;
 }
 
-.game-end span{
+#game-end span{
     font-size: 2rem;
     font-weight: 600;
     color: black;
     margin-bottom: 4rem;
+}
+
+#help-section{
+  background-color: #d3d3d3;
+  color: #000;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+}
+
+#help-section li:not(:last-child){
+  margin-bottom: 1rem;
+}
+
+#help-section img{
+  align-self: flex-end;
+  margin-right: 1rem;
 }
 
 .card img {
@@ -107,13 +134,18 @@ select {
 
 .card:hover,
 select:hover,
-button:hover {
+button:hover,
+.icon:hover {
   cursor: pointer;
 }
 
 .flip-card {
   transform: rotateY(-180deg);
   background-color: rgb(220, 220, 220);
+}
+
+.matched-cards{
+  background-color: #46e431;
 }
 
 @media (max-width: 700px) {
